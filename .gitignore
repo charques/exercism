@@ -27,7 +27,7 @@ cabal.project.local~
 target
 .idea
 
-pruebas.sc
+pruebas*.sc
 
 
 
