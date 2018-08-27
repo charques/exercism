@@ -12,12 +12,17 @@ data Planet = Mercury
 calcOnEarth :: Float -> Float -> Float
 calcOnEarth seconds factor = seconds / 31557600 / factor
 
+factorByPlanet :: Planet -> Float
+factorByPlanet planet = case planet of
+    Mercury -> 0.2408467
+    Venus -> 0.61519726
+    Earth -> 1
+    Mars -> 1.8808158
+    Jupiter -> 11.862615
+    Saturn -> 29.447498
+    Uranus -> 84.016846
+    Neptune -> 164.79132
+
 ageOn :: Planet -> Float -> Float
-ageOn Mercury seconds = calcOnEarth seconds 0.2408467
-ageOn Venus seconds = calcOnEarth seconds 0.61519726
-ageOn Earth seconds = calcOnEarth seconds 1
-ageOn Mars seconds = calcOnEarth seconds 1.8808158
-ageOn Jupiter seconds = calcOnEarth seconds 11.862615
-ageOn Saturn seconds = calcOnEarth seconds 29.447498
-ageOn Uranus seconds = calcOnEarth seconds 84.016846
-ageOn Neptune seconds = calcOnEarth seconds 164.79132
+ageOn planet seconds = calcOnEarth seconds (factorByPlanet planet)
+
